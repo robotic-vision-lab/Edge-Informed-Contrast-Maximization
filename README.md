@@ -64,7 +64,7 @@ Linux would be the best option for working with JAX! At the time of
 development, JAX GPU was not supported on Windows natively (only through WSL).
 We strongly recommend using JAX GPU.
 
-1. Install [JAX](https://docs.jax.dev/en/latest/installation.html) (please follow the [instructions](https://docs.jax.dev/en/latest/installation.html) to install it successfully):
+1. Install [JAX](https://docs.jax.dev/en/latest/index.html) (please follow the [instructions](https://docs.jax.dev/en/latest/installation.html) to install it successfully):
    ```bash
    pip install -U "jax[cuda12]"
    ```
