@@ -84,12 +84,12 @@ We strongly recommend using JAX GPU.
    ```bash
    pip install omegaconf hydra-core
    ```
-6. Install additional packages:
+6. Install the following additional packages:
    ```bash
    pip install easydict flow-vis imageio matplotlib numpy scikit-image scipy rich termcolor tqdm
    ```
 
-#### JAX Source Code Edits
+#### JAX Source Code Edit
 
 `scipy_callback` is the callback function that `Scipy` will receive. If
 `Scipy`'s call wrapper sees the attribute `intermediate_result` in the
@@ -106,7 +106,7 @@ needed to accommodate this function to make the intermediate loss values
 available in EINCM's callbacks.
 
 Go to `jaxopt._src.scipywrapper.py` around line 325-328 (might be version
-dependent), where you see the `scipy_callback` function:
+dependent), and find the `scipy_callback` function:
 
 ```python
 325 def scipy_callback(x_onp: onp.ndarray):
@@ -138,8 +138,8 @@ python -m experiments.e00
 ```
 
 This will run the `__main__.py` module within `experiments.e00`.  To enable
-flexibility in how configs are input, the experiment expects configs to be
-provided explicitly through command line.
+flexibility in how configs are inputted, the experiment expects configs to be
+provided explicitly through command line:
 
 ```bash
 cd /path/to/src
@@ -155,7 +155,7 @@ python -m experiments.e00 --config-dir="path/to/config/direcory" --config-name="
 # If relative paths are used, the args config-dir and config-path presume different current working directories.
 
 ```
-Alternatively, the user may make use of the bash script `run.sh` (needs execute
+Alternatively, you may make use of the bash script `run.sh` (needs execute
 permissions `chmod +x run.sh`). 
 
 For more details on running the experiment under different configurations go to
