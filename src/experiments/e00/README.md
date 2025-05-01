@@ -1,31 +1,33 @@
 # Experiment `e00`
 
 ## TOC
-- [1. About Experiment](#1-about-experiment) <br/>
-- [2. Configs](#2-configs) <br/>
-  - [2.1. Basic run with `main.yaml`](#21-basic-run-with-mainyaml) <br/>
-  - [2.2. Add configs on command line with `main.yaml`](#22-add-configs-on-command-line-with-mainyaml) <br/>
-    - [2.2.1. Run `SOLVE` with MVSEC `indoor_flying1`](#221-run-solve-with-mvsec-indoor_flying1) <br/>
-    - [2.2.2. Run `SOLVE` + `EVAL` with MVSEC `indoor_flying1`](#222-run-solve--eval-with-mvsec-indoor_flying1) <br/>
-    - [2.2.3. Run `SOLVE` + `EVAL` + `PLOT` with MVSEC `indoor_flying1`](#223-run-solve--eval--plot-with-mvsec-indoor_flying1) <br/>
-  - [2.3. Features](#23-features) <br/>
-    - [2.3.1. Edge Extraction Pipeline](#231-edge-extraction-pipeline)  <br/>
-      - [2.3.1.1 Image Pre-processing](#2311-image-pre-processing) <br/>
-      - [2.3.1.2. Image to Edge](#2312-image-to-edge) <br/>
-    - [2.3.2 Pyramid Tweaking](#232-pyramid-tweaking) <br/>
-      - [2.3.2.1 Changing Pyramid Levels and Bases](#2321-changing-pyramid-levels-and-bases) <br/>
-      - [2.3.2.2 Scaling Methods](#2322-scaling-methods) <br/>
-    - [2.3.3 Solver (Optimizer) Tweaking](#233-solver-optimizer-tweaking) <br/>
-      - [2.3.3.1 Growing `maxiter`](#2331-growing-maxiter) <br/>
-      - [2.3.3.2 Multiple Attempts](#2332-multiple-attempts) <br/>
-      - [2.3.3.3 Repeat Solve](#2333-repeat-solve) <br/>
-    - [2.3.4 Handovers](#234-handovers) <br/>
-    - [2.3.5 Callbacks](#235-callbacks) <br/>
-    - [2.3.6 Checkpoints](#236-checkpoints) <br/>
-    - [2.3.7 Running in Phases](#237-running-in-phases) <br/>
-      - [2.3.7.1 Run `EVAL` from previously run `SOLVE`](#2371-run-eval-from-previously-run-solve) <br/>
-      - [2.3.7.2 Run `PLOT` from previously run `SOLVE`, `EVAL`](#2372-run-plot-from-previously-run-solve-eval) <br/>
-    - [2.3.8 Advanced Config Overrides](#238-advanced-config-overrides)  <br/>
+- [Experiment `e00`](#experiment-e00)
+  - [TOC](#toc)
+  - [1. About Experiment](#1-about-experiment)
+  - [2. Configs](#2-configs)
+    - [2.1. Basic Run With `main.yaml`](#21-basic-run-with-mainyaml)
+    - [2.2. Add Configs On Command Line With `main.yaml`](#22-add-configs-on-command-line-with-mainyaml)
+      - [2.2.1. Run `SOLVE` with MVSEC `indoor_flying1`](#221-run-solve-with-mvsec-indoor_flying1)
+      - [2.2.2. Run `SOLVE` + `EVAL` With MVSEC `indoor_flying1`](#222-run-solve--eval-with-mvsec-indoor_flying1)
+      - [2.2.3. Run `SOLVE` + `EVAL` + `PLOT` With MVSEC `indoor_flying1`](#223-run-solve--eval--plot-with-mvsec-indoor_flying1)
+  - [2.3. Features](#23-features)
+    - [2.3.1. Edge Extraction Pipeline](#231-edge-extraction-pipeline)
+      - [2.3.1.1 Image Pre-Processing](#2311-image-pre-processing)
+      - [2.3.1.2. Image To Edge](#2312-image-to-edge)
+    - [2.3.2 Pyramid Tweaking](#232-pyramid-tweaking)
+      - [2.3.2.1 Changing Pyramid Levels And Bases](#2321-changing-pyramid-levels-and-bases)
+      - [2.3.2.2 Scaling Methods](#2322-scaling-methods)
+    - [2.3.3 Solver (Optimizer) Tweaking](#233-solver-optimizer-tweaking)
+      - [2.3.3.1 Growing `maxiter`](#2331-growing-maxiter)
+      - [2.3.3.2 Multiple Attempts](#2332-multiple-attempts)
+      - [2.3.3.3 Repeat Solve](#2333-repeat-solve)
+    - [2.3.4 Handovers](#234-handovers)
+    - [2.3.5 Callbacks](#235-callbacks)
+    - [2.3.6 Checkpoints](#236-checkpoints)
+    - [2.3.7 Running In Phases](#237-running-in-phases)
+      - [2.3.7.1 Run `EVAL` From Previously Run `SOLVE`](#2371-run-eval-from-previously-run-solve)
+      - [2.3.7.2 Run `PLOT` From Previously Run `SOLVE`, `EVAL`](#2372-run-plot-from-previously-run-solve-eval)
+    - [2.3.8 Advanced Config Overrides](#238-advanced-config-overrides)
 
 
 ## 1. About Experiment 
