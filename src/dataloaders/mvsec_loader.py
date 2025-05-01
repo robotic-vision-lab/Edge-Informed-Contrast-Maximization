@@ -8,23 +8,6 @@ from easydict import EasyDict as edict
 from .mvsec_utils.mvsec_reader import MVSECReader
 
 
-# # MVSEC dictionary
-# MVSEC = edict()
-# MVSEC.PATH = './datasets/MVSEC22' # relative to src (src will be in sys.path)
-# MVSEC.SIZE = (260, 346)
-# MVSEC.HEIGHT = 260
-# MVSEC.WIDTH = 346
-# MVSEC.SEQUENCES = {
-#     'indoor_flying1': {'data_path': 'hdf5/indoor_flying/indoor_flying1_data.hdf5', 'gt_path': 'hdf5/indoor_flying/indoor_flying1_gt.hdf5', 'flow_gt_path': 'Flow GT/indoor_flying/indoor_flying1_gt_flow_dist.npz'},
-#     'indoor_flying2': {'data_path': 'hdf5/indoor_flying/indoor_flying2_data.hdf5', 'gt_path': 'hdf5/indoor_flying/indoor_flying2_gt.hdf5', 'flow_gt_path': 'Flow GT/indoor_flying/indoor_flying2_gt_flow_dist.npz'},
-#     'indoor_flying3': {'data_path': 'hdf5/indoor_flying/indoor_flying3_data.hdf5', 'gt_path': 'hdf5/indoor_flying/indoor_flying3_gt.hdf5', 'flow_gt_path': 'Flow GT/indoor_flying/indoor_flying3_gt_flow_dist.npz'},
-#     'indoor_flying4': {'data_path': 'hdf5/indoor_flying/indoor_flying4_data.hdf5', 'gt_path': 'hdf5/indoor_flying/indoor_flying4_gt.hdf5', 'flow_gt_path': 'Flow GT/indoor_flying/indoor_flying4_gt_flow_dist.npz'},
-#     'motorcycle1'   : {'data_path': 'motorcycle/motorcycle1_data.hdf5'},
-#     'outdoor_day1'  : {'data_path': 'hdf5/outdoor_day/outdoor_day1_data.hdf5', 'gt_path': 'hdf5/outdoor_day/outdoor_day1_gt.hdf5', 'flow_gt_path': 'Flow GT/outdoor_day/outdoor_day1_gt_flow_dist.npz'},
-#     'outdoor_day2'  : {'data_path': 'hdf5/outdoor_day/outdoor_day2_data.hdf5', 'gt_path': 'hdf5/outdoor_day/outdoor_day2_gt.hdf5', 'flow_gt_path': 'Flow GT/outdoor_day/outdoor_day2_gt_flow_dist.npz'},
-#     'outdoor_night1': {'data_path': 'hdf5/outdoor_night/outdoor_night1_data.hdf5', 'gt_path': 'hdf5/outdoor_night/outdoor_night1_gt.hdf5', 'flow_gt_path': 'Flow GT/outdoor_night/outdoor_night1_gt_flow.npz'},
-# }
-
 
 class MVSECDataset:
     def __init__(self, root_dir, sequence_name):
@@ -335,7 +318,6 @@ class MVSECDataLoader:
         }
 
 
-
     def estimate_gt_flow(self, t_start, t_end):
         """Adapted and improved from https://github.com/daniilidis-group/EV-FlowNet/blob/master/src/eval_utils.py#L95
         """        
@@ -448,7 +430,6 @@ class MVSECDataLoader:
 
         # no need to return coords and mask, since numpy arrays are mutable
         return 
-
 
 
     def get_sample_between_two_gt_timestamps(self, idx_gt):

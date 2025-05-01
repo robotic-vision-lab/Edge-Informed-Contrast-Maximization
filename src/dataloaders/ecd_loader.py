@@ -33,6 +33,7 @@ class ECDDataLoader:
         
         self.dataset = ECDDataset(root_dir=self.root_dir, sequence_name=self.sequence_name)
 
+
     def get_ready(self):
         print(f'Loading {self.sequence_name} data...')
         self.load_events()
@@ -40,6 +41,7 @@ class ECDDataLoader:
         self.precompute_eval_event_indices()
         self.precompute_eval_image_indices()
         print(f'Ready to load {self.sequence_name} datasamples.\n{"":-^80}')
+
 
     def load_events(self):
         events_npz = np.loadtxt(self.dataset.events_path, delimiter=' ', skiprows=0, dtype=np.float64)
@@ -58,6 +60,7 @@ class ECDDataLoader:
         self.events['t'] = self.events['t'][ev_crop_mask]
         self.events['p'] = self.events['p'][ev_crop_mask]
 
+
     def load_images(self):
         self.image_ts = []
         with open(self.dataset.image_ts_path, '+r') as f:
@@ -70,13 +73,16 @@ class ECDDataLoader:
 
         self.image_paths = sorted([str(p) for p in self.dataset.images_dir.iterdir() if str(p).endswith('.png')])
 
+
     def precompute_eval_event_indices(self):
         self.eval_event_start_idxs = np.searchsorted(self.events['t'], self.eval_ts[0, :], side='left')
         self.eval_event_end_idxs = np.searchsorted(self.events['t'], self.eval_ts[1, :], side='left')
-    
+
+
     def precompute_eval_image_indices(self):
         self.eval_image_start_idxs = np.searchsorted(self.image_ts, self.eval_ts[0, :], side='left')
         self.eval_image_end_idxs = np.searchsorted(self.image_ts, self.eval_ts[1, :], side='left')
+
 
     def get_sample(self, eval_idx):
         # prepare sample images
@@ -123,9 +129,11 @@ class ECDDataLoader:
             'n_event_deficiency': self.n_event_deficiency,
             'orig_n_events': orig_n_events,
         }
-    
+
+
     def __getitem__(self, idx):
         return self.get_sample(idx)
+  
     
     def __len__(self):
         return len(self.eval_ts)

@@ -75,6 +75,7 @@ class DSECDataLoader:
         self._IMAGE_MAPPING_CONSTRUCTED = False
         self._EVENT_REC_MAP_CONSTRUCTED = False
 
+
     def get_ready(self):
         print(f'Loading ({self.sequence_name}) left data...')
         self.load_left_data()
@@ -85,6 +86,7 @@ class DSECDataLoader:
         self.precompute_eval_event_indices()
         self.precompute_eval_image_indices()
         print(f'\nReady to load {self.sequence_name} datasamples.\n{"":-^80}')
+
 
     def load_left_data(self):
         # load from events.h5
@@ -123,6 +125,7 @@ class DSECDataLoader:
             self.eval_ts_us = np.loadtxt(self.dataset.test_forward_optical_flow_timestamps_path, delimiter=',', skiprows=1, dtype='int64')
 
         self._LEFT_DATA_LOADED = True
+
 
     def load_flow_gt(self):
         print('Loading flow ground truth... ')
@@ -171,11 +174,13 @@ class DSECDataLoader:
         self.eval_event_end_idxs = np.searchsorted(self.l_events['t'], self.eval_ts_us[:, 1] - self.t_offset, side='left')
         print('\bDone.')
     
+
     def precompute_eval_image_indices(self):
         print('Pre-computing eval image indices for efficiency... ')
         self.eval_image_start_idxs = np.searchsorted(self.l_image_ts_us, self.eval_ts_us[:, 0], side='left')
         self.eval_image_end_idxs = np.searchsorted(self.l_image_ts_us, self.eval_ts_us[:, 1], side='left')
         print('\bDone.')
+
 
     def construct_mapping_for_image(self):
         print('Constructing mapping for image... ')
@@ -256,6 +261,7 @@ class DSECDataLoader:
         flow_map[valid_map[0], valid_map[1], 1] = (flow_16bit[valid_map[0], valid_map[1], 1] - 2 ** 15) / 128
         return flow_map, valid2D
 
+
     @staticmethod
     def load_flow(flowfile: Path):
         assert flowfile.exists()
@@ -264,9 +270,11 @@ class DSECDataLoader:
         flow, valid2D = DSECDataLoader.flow_16bit_to_float(flow_16bit)
         return flow, valid2D
 
+
     def index_to_time(self, event_idx):
         return self.l_events['t'][event_idx]
     
+
     def time_to_index(self, event_t_us):
         return np.searchsorted(self.l_events['t'], event_t_us) - 1
 
@@ -343,9 +351,11 @@ class DSECDataLoader:
     def is_left_data_loaded(self):
         return self._LEFT_DATA_LOADED
 
+
     @property
     def is_flow_gt_loaded(self):
         return self._FLOW_GT_LOADED
+
 
     def __getitem__(self, idx):
         return self.get_sample(idx)
