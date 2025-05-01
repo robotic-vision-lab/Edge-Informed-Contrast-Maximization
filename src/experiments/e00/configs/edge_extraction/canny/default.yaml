@@ -1,0 +1,4 @@
+aperture_size: 3  # aperture size for the Sobel operator
+threshold_1: 100  # below this value -> sure-NOT-an-edge
+threshold_2: 200  # above this value -> sure-IS-an-edge
+                  # between threshold_1 and threshold_2 -> IS-edge if connected to sure-IS-an-edge pixel

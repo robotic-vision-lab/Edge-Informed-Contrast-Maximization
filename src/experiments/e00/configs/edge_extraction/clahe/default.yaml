@@ -1,0 +1,4 @@
+clip_limit: 5
+tile_grid_size: 
+  - 10
+  - 10

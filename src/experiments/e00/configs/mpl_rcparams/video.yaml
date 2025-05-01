@@ -1,0 +1,54 @@
+# xtick.direction     : in
+xtick.top           : false
+xtick.bottom        : false
+xtick.labeltop      : false
+xtick.labelbottom   : false
+xtick.major.size    : 0 # default 3.5
+xtick.minor.size    : 0 # default 2.0
+xtick.minor.visible : false
+# xtick.color         : dimgray
+# ytick.direction     : in
+ytick.left          : false
+ytick.right         : false
+ytick.labelleft     : false
+ytick.labelright    : false
+ytick.major.size    : 0 # default 3.5
+ytick.minor.size    : 0 # default 2.0
+ytick.minor.visible : false
+# ytick.color         : dimgray
+
+
+# font.family         : serif        # set font to Compute Modern
+# font.serif          : cm10         # set font to Compute Modern
+# text.usetex         : True           # enable latex, but slows rendering significantly
+# text.latex.preamble : r'\boldmath'   # add \boldmath to preamble
+# toolbar             : null         # with this set to None, zoom keymap 'o' does not work
+
+pdf.compression     : 0
+legend.fontsize     : x-large
+axes.labelsize      : x-large
+axes.titlesize      : x-large
+xtick.labelsize     : large
+ytick.labelsize     : large
+axes.facecolor      : white
+axes.edgecolor      : gray
+axes.grid.axis      : both
+axes.grid.which     : major
+# axes.labelpad       : 10.0
+grid.color          : lightgray
+# grid.linewidth      : 0.5
+grid.alpha          : 0.5
+axes.spines.left    : false
+axes.spines.top     : false
+axes.spines.bottom  : false
+axes.spines.right   : false
+figure.frameon      : false
+savefig.transparent : false
+savefig.format      : png
+# savefig.directory   : ./outputs/figures
+image.origin        : upper
+figure.dpi           : 100
+figure.figsize       : [20, 16]
+figure.autolayout    : true
+figure.titlesize     : xx-large
+figure.titleweight   : bold

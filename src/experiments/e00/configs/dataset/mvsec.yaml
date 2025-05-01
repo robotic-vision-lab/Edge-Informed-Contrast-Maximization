@@ -1,0 +1,26 @@
+height: 256
+width: 336
+sensor_size: 
+  - ${dataset.height}
+  - ${dataset.width}
+
+
+loader:
+  _target_: dataloaders.mvsec_loader.MVSECDataLoader
+  root_dir: ${root_dir}
+  sequence_name: ${sequence_name}
+  delta_idx: ${dt}
+  des_n_events: ${des_n_events}
+  load_more_images: true
+  use_new_pruning_limits: false
+  prefer_latest_events: ${prefer_latest_events_in_sample}
+
+# optical flow
+sequence_names_split:
+  indoor_flying1: train
+  indoor_flying2: train
+  indoor_flying3: train
+  outdoor_day1: train
+
+test_sequence_names:
+  outdoor_day2: test

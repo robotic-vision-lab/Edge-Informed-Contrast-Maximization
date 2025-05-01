@@ -1,0 +1,9 @@
+type: gaussian
+kernel_size: 1
+sigma: 1
+
+smoothen_edges_func:
+  _partial_: true
+  _target_: utils.img_utils.smoothen_edges
+  k_size: ${edge_extraction.smoothen.kernel_size}
+  sigma: ${edge_extraction.smoothen.sigma}

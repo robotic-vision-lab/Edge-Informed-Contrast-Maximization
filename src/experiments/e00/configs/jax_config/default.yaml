@@ -1,0 +1,7 @@
+jax_platform_name:  gpu
+jax_enable_x64: true
+# jax_array: true
+# jax_compilation_cache_dir: './tmp.jax_cache'
+# jax_persistent_cache_min_entry_size_bytes: -1
+# jax_persistent_cache_min_compile_time_secs: 0
+# jax_persistent_cache_enable_xla_caches: all

@@ -1,0 +1,13 @@
+jax_platform_name:  gpu
+jax_enable_x64: true
+jax_array: true
+jax_debug_nans: true
+jax_debug_infs: true
+jax_traceback_filtering: on
+# jax_explain_cache_misses: true
+# jax_compilation_cache_dir: './tmp.jax_cache'
+# jax_persistent_cache_min_entry_size_bytes: -1
+# jax_persistent_cache_min_compile_time_secs: 0
+# jax_persistent_cache_enable_xla_caches: all #xla_gpu_per_fusion_autotune_cache_dir
+# jax_logging_level: DEBUG
+# jax_disable_jit: false # set true if needed

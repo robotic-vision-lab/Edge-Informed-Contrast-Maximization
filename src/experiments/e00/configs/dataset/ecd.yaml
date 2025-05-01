@@ -1,0 +1,58 @@
+height: 176
+width: 240
+sensor_size: 
+  - ${dataset.height}
+  - ${dataset.width}
+
+loader:
+  _target_: dataloaders.ecd_loader.ECDDataLoader
+  root_dir: ${root_dir}
+  sequence_name: ${sequence_name}
+  des_n_events: ${des_n_events}
+  delta_idx: ${dt}
+  prefer_latest_events: ${prefer_latest_events_in_sample}
+
+
+# optical flow
+sequence_names_split:
+  # office and urban (events + images)
+  office_spiral: test
+  office_zigzag: test
+  urban: test
+
+  # outdoor (events + images + imu)
+  outdoors_running: test
+  outdoors_walking: test
+
+  # slider rigged (events + images + GT pose)    
+  slider_close: test
+  slider_depth: test # <-- the only sequence with comparison data
+  slider_far: test
+  slider_hdr_close: test
+  slider_hdr_far: test
+
+  # shapes, poster, boxes, outdoor, dymamic (events + images + imu + GT pose)
+  boxes_6dof: test
+  boxes_rotation: test
+  boxes_translation: test
+  calibration: test
+  dynamic_6dof: test
+  dynamic_rotation: test
+  dynamic_translation: test
+  hdr_boxes: test
+  hdr_poster: test
+  poster_6dof: test
+  poster_rotation: test
+  poster_rotation: test
+  poster_translation: test
+  shapes_6dof: test
+  shapes_rotation: test
+  shapes_translation: test
+
+  # simulation (events + images + depth + GT pose)
+  simulation_3planes: test
+  simulation_3walls: test
+# Note: ECD doesnot contain any optical flow groundtruth. Sequence names included 
+# here are only for the purpose of comparison with previous works. Nonetheless, 
+# since all the sequences contain both event and frame data, they are all useable.
+

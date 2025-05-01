@@ -1,0 +1,7 @@
+_partial_: true
+_target_: jaxopt.ScipyMinimize
+method: ${solver_params.theta_opt.method}
+jit: true
+options:
+  gtol: ${solver_params.theta_opt.options.gtol}
+  return_all: true

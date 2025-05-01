@@ -1,0 +1,34 @@
+defaults:
+  - _self_
+  - denoise: default
+  - clahe: default
+  - sharpen: default
+  - bilateral_filter: default
+  - canny: default
+  - smoothen: gaussian
+
+
+preprocess_image_func:
+  _partial_: true
+  _target_: utils.img_utils.preprocess_image
+  denoise_h: ${edge_extraction.denoise.smoothness_factor}
+  denoise_template_win_size: ${edge_extraction.denoise.template_win_size}
+  denoise_search_win_size: ${edge_extraction.denoise.search_win_size}
+  clahe_clip_limit: ${edge_extraction.clahe.clip_limit}
+  clahe_tile_grid_size: ${edge_extraction.clahe.tile_grid_size}
+  sharpen_kernel_size: ${edge_extraction.sharpen.neg_blur_kernel_size}
+  sharpen_sigma_x: ${edge_extraction.sharpen.sigma}
+  sharpen_alpha: ${edge_extraction.sharpen.pos_weight}
+  sharpen_beta: ${edge_extraction.sharpen.neg_weight}
+  bilateral_filter_neigh_diameter: ${edge_extraction.bilateral_filter.pix_neigh_diameter}
+  bilateral_filter_sigma_color: ${edge_extraction.bilateral_filter.sigma_color}
+  bilateral_filter_sigma_space: ${edge_extraction.bilateral_filter.sigma_space}
+
+
+
+image_to_edge_func:
+  _partial_: true
+  _target_: utils.img_utils.image_to_edge
+  apert_size: ${edge_extraction.canny.aperture_size}
+  th1: ${edge_extraction.canny.threshold_1}
+  th2: ${edge_extraction.canny.threshold_2}

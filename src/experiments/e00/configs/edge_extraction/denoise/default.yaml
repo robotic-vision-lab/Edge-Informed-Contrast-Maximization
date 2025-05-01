@@ -1,0 +1,3 @@
+smoothness_factor: 4
+template_win_size: 3
+search_win_size: 11

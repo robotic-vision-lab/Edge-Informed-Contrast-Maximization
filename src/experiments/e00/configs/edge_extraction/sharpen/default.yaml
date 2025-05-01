@@ -1,0 +1,4 @@
+neg_blur_kernel_size: 3
+sigma: 2
+pos_weight: 1.5
+neg_weight: -0.5

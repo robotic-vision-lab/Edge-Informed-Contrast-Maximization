@@ -1,0 +1,10 @@
+type: inverse_exponential_distance_transform
+dist_surf_saturation_distance: 6
+alpha_iedt: ${divide:${edge_extraction.smoothen.dist_surf_saturation_distance}, 5.541}
+formulation: exponential
+
+
+smoothen_edges_func:
+  _partial_: true
+  _target_: utils.img_utils.eincm_inv_exp_dist_transform
+  alpha: ${edge_extraction.smoothen.alpha_iedt}

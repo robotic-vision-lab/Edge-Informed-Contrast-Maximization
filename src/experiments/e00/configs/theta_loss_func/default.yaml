@@ -1,0 +1,9 @@
+_partial_: true
+_target_: eincm.losses.loss_func
+alpha: ${alpha}
+beta: ${beta}
+gamma: ${gamma}
+delta: ${delta}
+n_pyr_lvls: ${n_pyr_lvls}
+sensor_size: ${dataset.sensor_size}
+scale_to_sensor_size_method: ${scale_theta_to_sensor_size_method}

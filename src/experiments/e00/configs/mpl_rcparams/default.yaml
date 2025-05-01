@@ -1,0 +1,48 @@
+xtick.direction     : in
+xtick.top           : true
+xtick.minor.visible : true
+xtick.color         : dimgray
+ytick.direction     : in
+ytick.right         : true
+ytick.minor.visible : true
+ytick.color         : dimgray
+
+font.size           : 15
+# font.family         : serif        # set font to Compute Modern
+# font.serif          : cm10         # set font to Compute Modern
+# text.usetex         : True           # enable latex, but slows rendering significantly
+# text.latex.preamble : r'\boldmath'   # add \boldmath to preamble
+# toolbar             : null         # with this set to None, zoom keymap 'o' does not work
+
+pdf.compression     : 0
+legend.fontsize     : x-large
+axes.labelsize      : x-large
+axes.titlesize      : x-large
+xtick.labelsize     : large
+ytick.labelsize     : large
+axes.facecolor      : white
+axes.edgecolor      : gray
+axes.grid.axis      : both
+axes.grid.which     : major
+# axes.labelpad       : 10.0
+grid.color          : lightgray
+# grid.linewidth      : 0.5
+grid.alpha          : 0.5
+# axes.spines.left    : false
+# axes.spines.top     : false
+# axes.spines.bottom  : false
+# axes.spines.right   : false
+lines.dash_joinstyle: round # miter, round, bevel
+lines.dash_capstyle: butt # butt, round, projecting
+lines.solid_joinstyle: round # miter, round, bevel
+lines.solid_joinstyle: projecting # butt, round, projecting 
+figure.frameon      : false
+savefig.transparent : false
+savefig.format      : png
+# savefig.directory   : ./outputs/figures
+image.origin        : upper
+figure.dpi           : 100
+figure.figsize       : [15, 12]
+figure.autolayout    : true
+figure.titlesize     : xx-large
+figure.titleweight   : bold

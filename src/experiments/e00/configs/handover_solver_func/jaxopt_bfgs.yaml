@@ -1,0 +1,7 @@
+_partial_: true
+_target_: jaxopt.ScipyBoundedMinimize
+method: ${solver_params.ho_opt.method}
+jit: true
+options:
+  gtol: ${solver_params.ho_opt.options.gtol}
+  return_all: true

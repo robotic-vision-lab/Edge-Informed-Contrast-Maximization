@@ -1,0 +1,136 @@
+defaults:
+  - _self_
+  - dataset: dsec
+  - jax_config: default
+  - edge_extraction: default
+  - theta_loss_func: default
+  - handover_loss_func: default
+  - outdoor_day1_run_idx_range: continuous
+  - mpl_rcparams: paper
+
+dt: 4 # only applied for MVSEC and ECD
+sequence_name: indoor_flying1
+root_dir: '/media/pritam/Extreme Pro/Datasets/MVSEC'
+des_n_events: 30000
+prefer_latest_events_in_sample: true
+alpha: 20
+beta: 35
+gamma: 0.00025 # heuristical; can keep set to zero
+delta: 0.0 # only experimental; keep set to zero
+enable_image_preprocessing: true
+
+run_full_sequence: true
+run_idx_range: [0, 4] # valid when run_full_sequence is false
+
+n_pyr_lvls: 5
+pyramid_bases: [2, 2, 2, 2] # n_pyr_lvls - 1 entries
+scale_theta_to_sensor_size_method: bilinear
+pyramid_downscale_method: lanczos3
+pyramid_upscale_method: repeat
+
+solver_params:
+  n_repeat_solve: 1
+  theta_opt:
+    method: BFGS # note: there is a JAX issue. BFGS (and CG) converge correctly only with float64 enabled or high gtol.
+    maxiter: 40
+    n_extra_attempts_per_level: 1
+    extra_attempt_levels: [0] # 0: finest, 1: second finest, ...
+    n_extra_attempts:
+      pyr_lvl_0: 1
+      pyr_lvl_1: 1
+    miniter: ${divide:${solver_params.theta_opt.maxiter},5}
+    options: 
+      gtol: 1e-7
+  handover_opt:
+    method: L-BFGS-B
+    maxiter: 20
+    miniter: ${divide:${solver_params.handover_opt.maxiter},5}
+    options: 
+      gtol: 1e-6
+
+use_growing_maxiters: true
+maxiters_grow_order: 1.413
+
+handover_settings:
+  use_handover: true
+  solve_handover_for_levels: [1, 0] # 0: finest, 1: second finest, ...
+  use_downscaled_finest_priors: true
+  handover_limits: [0.0, 1.0]
+  clip_solved_handover: false
+  clip_solved_handover_limits: [0.1, 0.9]
+  alpha_handover: 0.67
+
+callback_options:
+  theta_opt:
+    enable: true
+    print_intermediate_loss: false
+    collect_thetas_and_losses: true
+    eval_thetas: false
+    collect_eval_results: false # ignored if eval_thetas is false
+    print_eval_results: false # ignored if eval_thetas is false
+  handover_opt:
+    enable: true
+    print_intermediate_loss: false
+    collect_ho_weights_and_losses: true
+    collect_thetas: true
+    eval_ho_weights: false
+    collect_eval_results: false # ignored if eval_ho_weights is false
+    print_eval_results: false # ignored if eval_ho_weights is false
+
+experiment_settings:
+  solver:
+    enable: true
+    checkpoints:
+      enable: false
+      at_percentage: 20
+      delete_after_final_save: true
+    run_from_checkpoint: false 
+    run_from_checkpoint_path: null
+    intermediate_result_collection: 
+      theta_opt:
+        thetas: ${callback_options.theta_opt.collect_thetas_and_losses}
+        losses: ${callback_options.theta_opt.collect_thetas_and_losses}
+        eval_results: ${callback_options.theta_opt.eval_thetas}
+      handover_opt:
+        handover_weights: ${callback_options.handover_opt.collect_ho_weights_and_losses}
+        losses: ${callback_options.handover_opt.collect_ho_weights_and_losses}
+        thetas: ${callback_options.handover_opt.collect_thetas}
+        eval_results: ${callback_options.handover_opt.eval_ho_weights}
+  theta_evaluation:
+    enable: true
+    eager: false 
+    eval_results_on_sample_every: 1
+    print_eval_results_at_sample: true
+  plot:
+    enable: true
+    eager: false 
+    plot_end_results_on_sample_every: 1
+    end_result:
+      show: true
+      save: false
+      save_format: png
+      make_vid: true
+    evals:
+      show: true
+      save: false
+      save_format: png
+  store_to_disk:
+    opt_results: true
+    eval_results: true
+  loading_paths:
+    opt_results: null
+    eval_results: null
+  load_cfg_from_opt_results: false
+  load_cfg_from_eval_results: false
+
+
+log_buffer_size: 100
+
+save: False
+print_console: true
+show_plots: False
+save_plots: False
+
+range_normalization:
+  from_0_to_1: 0
+  from_0_to_255: 1
