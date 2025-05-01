@@ -20,7 +20,7 @@ This is the official repository for our paper titled, "Secrets of Edge-Informed 
 ## Citation
 If you use any of this work, please cite our paper.
 
-```
+```bibtex
 @inproceedings{karmokar2025secrets,
     author = {Karmokar, Pritam P. and Nguyen, Quan H. and Beksi, William J.},
     title = {Secrets of Edge-Informed Contrast Maximization for Event-Based Vision},
