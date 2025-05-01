@@ -28,6 +28,7 @@
       - [2.3.7.1 Run `EVAL` From Previously Run `SOLVE`](#2371-run-eval-from-previously-run-solve)
       - [2.3.7.2 Run `PLOT` From Previously Run `SOLVE`, `EVAL`](#2372-run-plot-from-previously-run-solve-eval)
     - [2.3.8 Advanced Config Overrides](#238-advanced-config-overrides)
+    - [2.3.9 DSEC Extended Evaluations](#239-dsec-extended-evaluations)
 
 
 ## 1. About Experiment 
@@ -443,6 +444,10 @@ eval metric plots inside current run's output directory.
 <p align="right">[<a href="#toc">Go to TOC</a>]</p>
 
 ### 2.3.8 Advanced Config Overrides 
+While storing to disk in NPZ format, the EINCM codebase always saves complete config dictionary inside it. When run in phases, 
+these configs can be configured to be loaded and used, overwriting the one loaded through the `main.yaml` file. 
+Additionally, `hydra` also saves the used config in every current output directory inside `.hydra` directory. In future 
+runs, this stored config in YAML format can also be used as follows.
 ```bash
 python -m experiments.e00 --config-dir="/path/to/.hydra/directory" --config-name=config\
    ...
@@ -454,5 +459,33 @@ python -m experiments.e00 --config-dir="/path/to/.hydra/directory" --config-name
 #    --config-name=config\
 #    ...
 ```
+
+<p align="right">[<a href="#toc">Go to TOC</a>]</p>
+
+
+### 2.3.9 DSEC Extended Evaluations
+The evaluation timestamp files provided by DSEC Optical Flow Dataset are not continuous. In that, the evaluation timestamps
+are for time windows of 100 ms at intervals of 500 ms (e.g., 0-100, 500-600, 1000-1100, ... and so on). To experiment on
+with continuous evaluations, the authors have created a continuous version of the evaluation timestamps by extending the 
+timestamp pairs to also include the windows in between (e.g., 0-100, 100-200, 200-300, ... and so on). These are available 
+in [docs/assets/dsec_extended_evals](../../../docs/assets/dsec_extended_evals/). Extended timestamps for each sequence
+are correspondingly named with a suffix `"_"`. For example, the extended version of `interlaken_00_b.csv` is named 
+`interlaken_00_b_.csv`. The DSEC dataloader expects these extended files to exist inside the same directory the original
+timestamps exist.
+Then, to use the extended evaluation timestamps, set `dataset.loader.extended` to True and run as follows.
+
+```bash
+python -m experiments.e00 --config-path=./configs --config-name=main\
+   ...
+   dataset=dsec\
+   des_n_events=1500000\
+   root_dir="/media/pritam/Extreme Pro/Datasets/DSEC"\
+   sequence_name=thun_01_a\
+   ...
+   dataset.loader.extended=True\
+   ...
+```
+Above config will have the DSEC dataloader load datasample as per the extended timestamps.
+
 
 <p align="right">[<a href="#toc">Go to TOC</a>]</p>
