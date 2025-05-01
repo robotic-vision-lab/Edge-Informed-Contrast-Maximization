@@ -426,6 +426,7 @@ class EINCMExperiment:
         
         # for outdoor_day1 evaluations, set event mask to ignore lower pixel rows containing car
         # this is to compare other works which followed the same process while reporting their metrics 
+        event_mask = None
         if self.cfg.sequence_name == 'outdoor_day1':
             event_mask = make_event_mask(staged_sample['events']['x'], staged_sample['events']['y'],self.cfg.dataset.sensor_size)
             event_mask = event_mask.at[190:, :].set(0)
@@ -441,7 +442,8 @@ class EINCMExperiment:
                                                                    eval_ts=staged_sample['eval_events']['t'], 
                                                                    edges=staged_sample['edges'], 
                                                                    edge_ts=staged_sample['image_ts'], 
-                                                                   gt_flow=staged_sample['gt_flow'])
+                                                                   gt_flow=staged_sample['gt_flow'],
+                                                                   err_eval_event_mask=event_mask)
         time_str, eval_str, evals, _ = final_theta_eval_results
         if self.cfg.experiment_settings.theta_evaluation.print_eval_results_at_sample:
             print(f'{time_str} | {eval_str}')
