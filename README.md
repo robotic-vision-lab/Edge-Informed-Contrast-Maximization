@@ -159,7 +159,7 @@ Alternatively, you may make use of the bash script `run.sh` (needs execute
 permissions `chmod +x run.sh`). 
 
 For more details on running the experiment under different configurations go to
-[experiments/e00/](./src/experiments/e00/)
+[experiments/e00/](./src/experiments/e00/).
 
 ### License 
 
