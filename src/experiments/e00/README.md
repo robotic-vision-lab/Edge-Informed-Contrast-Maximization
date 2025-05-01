@@ -253,8 +253,8 @@ python -m experiments.e00 --config-path=./configs --config-name=main\
 # config#2
 python -m experiments.e00 --config-path=./configs --config-name=main\
    ...
-   n_pyr_lvls=4\
-   pyramid_bases=[4,2,2]\
+   n_pyr_lvls=3\
+   pyramid_bases=[4,4]\
    ...
 ```
 In the above snippet, `config#1` will configure the pyramid resolutions to be $1\times1$, $2\times2$, $4\times4$, 
