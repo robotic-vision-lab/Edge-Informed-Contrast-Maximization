@@ -225,8 +225,9 @@ class MVSECDataLoader:
 
         if self.sequence_name=='outdoor_day1':
             # filter events
+            no_car_map = self.l_events['x'] < 190
             for tup_elem in ['x', 'y', 't', 'p']:
-                self.l_events[tup_elem] = self.l_events[tup_elem][self.l_events['x'] < 190]
+                self.l_events[tup_elem] = self.l_events[tup_elem][no_car_map]
             
             
         
