@@ -382,7 +382,7 @@ To continue running from a checkpoint, do the following.
 python -m experiments.e00 --config-path=./configs --config-name=main\
    ...
    experiment_settings.solver.run_from_checkpoint=True\
-   experiment_settings.solver.run_from_checkpoint="/path/to/checkpoint/npz/file"\
+   experiment_settings.solver.run_from_checkpoint_path="/path/to/checkpoint/npz/file"\
    ...
 ```
 Above config will run code from the checkpoint and use configs stored inside the checkpoint NPZ file.
