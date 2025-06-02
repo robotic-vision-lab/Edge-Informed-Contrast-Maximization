@@ -235,7 +235,7 @@ class EINCMExperiment:
             opt_results = np.load(checkpoint_path, allow_pickle=True)
             self.opt_results = opt_results['opt_results'].item()
             loaded_cfg = opt_results['cfg'].item()
-            self.cfg = loaded_cfg.copy()
+            self.cfg = OmegaConf.create(loaded_cfg.copy())
 
             # update solver prior theta
             sort_key = lambda k: int(k.replace('datasample_idx_', ''))
@@ -250,9 +250,8 @@ class EINCMExperiment:
 
 
     def _skip_datasample_idx(self, datasample_idx):
-        if self.cfg.experiment_settings.solver.run_from_checkpoint:
-            if datasample_idx <= self.ckpt_idx:
-                return True
+        if datasample_idx <= self.ckpt_idx:
+            return True
             
         if not self.cfg.run_full_sequence:
             if not (self.cfg.run_idx_range[0] <= datasample_idx < self.cfg.run_idx_range[1]):
@@ -667,6 +666,7 @@ class EINCMExperiment:
             self.load_opt_results_from_disk(opt_results_path, load_cfg=load_cfg_opt)
         
         self._prerun()
+        self.ckpt_idx = -1
 
         print(f'\n{"":-^120}\n[{time.strftime("%Y-%m-%d %H:%M:%S")}] Evaluating Thetas\n{"":-^120}')
         tqdm_kwargs = {
@@ -728,6 +728,7 @@ class EINCMExperiment:
             self.load_eval_results_from_disk(eval_results_path, load_cfg=load_cfg_eval)
         
         self._prerun()
+        self.ckpt_idx = -1
 
         if (self.cfg.experiment_settings.plot.enable
             and (self.cfg.experiment_settings.plot.end_result.show
