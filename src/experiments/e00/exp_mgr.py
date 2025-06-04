@@ -254,16 +254,17 @@ class EINCMExperiment:
             return True
             
         if not self.cfg.run_full_sequence:
-            if not (self.cfg.run_idx_range[0] <= datasample_idx < self.cfg.run_idx_range[1]):
-                return True
             if (self.dataloader.sequence_name == 'outdoor_day1'
                 and self.cfg.outdoor_day1_run_idx_range.type == 'continuous'
                 and not (self.cfg.outdoor_day1_run_idx_range.start <= datasample_idx < self.cfg.outdoor_day1_run_idx_range.end)):
                 return True
-            if (self.dataloader.sequence_name == 'outdoor_day1' 
+            elif (self.dataloader.sequence_name == 'outdoor_day1' 
                 and self.cfg.outdoor_day1_run_idx_range.type == 'split' 
                 and not (self.cfg.outdoor_day1_run_idx_range.start_1 <= datasample_idx < self.cfg.outdoor_day1_run_idx_range.end_1
                      or self.cfg.outdoor_day1_run_idx_range.start_2 <= datasample_idx < self.cfg.outdoor_day1_run_idx_range.end_2)):
+                return True
+            elif (not self.dataloader.sequence_name == 'outdoor_day1'
+                and not (self.cfg.run_idx_range[0] <= datasample_idx < self.cfg.run_idx_range[1])):
                 return True
         
         return False
