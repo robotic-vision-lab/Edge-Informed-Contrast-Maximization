@@ -2,6 +2,7 @@ from pathlib import Path
 from pdb import set_trace as st
 
 import cv2 as cv
+import imageio as iio
 import imageio.v2 as imageio
 import numpy as np
 import yaml
@@ -9,6 +10,8 @@ from scipy.spatial.transform import Rotation as Rot
 
 from dataloaders.dsec_utils.euclidean_transform import Transform
 from dataloaders.reader_utils.hdf5_file_reader import HDF5FileReader
+
+iio.pluguins.freeimage.download()
 
 
 
@@ -337,7 +340,6 @@ class DSECDataLoader:
                 'images': sampled_images,
                 'image_ts': self.l_image_ts_us[idx_img_start : idx_img_end+1],
                 'eval_ts_us': self.eval_ts_us[eval_idx, :2],
-                'file_idx': self.eval_ts_us[eval_idx, 2],
                 'flow_gt': flow_gt,
                 'valid2D': valid2D,
                 'n_event_deficiency': self.n_event_deficiency,
