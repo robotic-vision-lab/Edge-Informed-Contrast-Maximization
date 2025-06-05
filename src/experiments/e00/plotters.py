@@ -751,7 +751,7 @@ class EINCMExperimentPlotter:
        
         # --------------------------------------------------------------------------------
         # plot
-        fig, axs = plt.subplots(3, 4, figsize=(31, 19), dpi=240)
+        fig, axs = plt.subplots(3, 4, figsize=(31, 19))
         # fig.canvas.manager.window.move(0, 0)
         fig.canvas.manager.set_window_title(f'Visualize Optimization End Results [idx={idx}] {add_title}')
         fig.suptitle(f'{self.cfg.sequence_name} Optimization End Results [idx={idx}] {add_title}')
