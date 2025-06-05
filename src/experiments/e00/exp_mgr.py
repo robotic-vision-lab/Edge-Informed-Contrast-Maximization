@@ -139,7 +139,7 @@ class EINCMExperiment:
             sensor_size=self.cfg.dataset.sensor_size
         )
         
-        # remaining args: theta, cur_pyr_lvl
+        # remaining args: theta
         self.scale_theta_to_sensor_size_pfunc = partial(
             scale_theta_to_sensor_size,
             sensor_size=self.cfg.dataset.sensor_size,
