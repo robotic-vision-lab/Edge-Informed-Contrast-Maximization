@@ -66,7 +66,7 @@ def evaluate_theta_array(theta_array,
         acc_eval_str = (f', AEE(↓): {f"{AEE:8.6f}"}, AREE(↓): {f"{AREE:8.6f}"}, '
             + f'A1PE(↓): {p1_AEE:8.6f}, A2PE(↓): {p2_AEE:8.6f}, A3PE(↓): {p3_AEE:8.6f}, A5PE(↓): {p5_AEE:8.6f}, '
             + f'A10PE(↓): {p10_AEE:8.6f}, A20PE(↓): {p20_AEE:8.6f}, '
-            + f'| n_pixels:{n_pixels}, n_gt_mask:{n_gt}, n_event_mask:{n_pred}, n_ee: {n_points}\n')
+            + f'| n_pixels:{n_pixels:,}, n_gt_mask:{n_gt:,}, n_event_mask:{n_pred:,}, n_ee: {n_points:,}\n')
 
     time_str = f'[{time.strftime("%Y-%m-%d %H:%M:%S")}]'
     eval_str =  (f'total_loss(↓): {loss:8.6f}, iwe_var(↑): {f"{jnp.var(l_iwe):8.6f}"}, '
