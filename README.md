@@ -105,7 +105,7 @@ account for this detail. Therefore, a small patch in the jaxopt source code is
 needed to accommodate this function to make the intermediate loss values
 available in EINCM's callbacks.
 
-Go to `jaxopt._src.scipywrapper.py` around line 325-328 (might be version
+Go to `jaxopt._src.scipywrappers.py` around line 325-328 (might be version
 dependent), and find the `scipy_callback` function:
 
 ```python
@@ -114,7 +114,7 @@ dependent), and find the `scipy_callback` function:
 327   return self.callback(x_jnp)
 ```
 
-and replace it with the following:
+Replace it with the following:
 
 ```python
 325 def scipy_callback(intermediate_result: osp.optimize.OptimizeResult):
