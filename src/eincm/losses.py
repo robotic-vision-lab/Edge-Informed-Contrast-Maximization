@@ -87,8 +87,8 @@ def compute_loss_objectives(theta,
     multi_ref_weights = compute_weights_for_multi_reference(n_refs=len(edge_ts))
     
     return {
-        'warped_xs': warped_xs,                         # float64 (n_events,)
-        'warped_ys': warped_ys,                         # float64 (n_events,)
+        'warped_xs': warped_xs,                         # float64 (n_imgs | n_refs, n_events)
+        'warped_ys': warped_ys,                         # float64 (n_imgs | n_refs, n_events)
         'correlations': corrs,                          # float64 (n_imgs,)
         'zero_correlations': zero_corrs,                # float64 (n_imgs,)
         'rel_correlations': rel_corrs,                  # float64 (n_imgs,)
