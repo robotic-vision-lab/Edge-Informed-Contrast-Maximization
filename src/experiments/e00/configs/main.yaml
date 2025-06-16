@@ -33,8 +33,6 @@ solver_params:
   theta_opt:
     method: BFGS # note: there is a JAX issue. BFGS (and CG) converge correctly only with float64 enabled or high gtol.
     maxiter: 40
-    n_extra_attempts_per_level: 1
-    extra_attempt_levels: [0] # 0: finest, 1: second finest, ...
     n_extra_attempts:
       pyr_lvl_0: 1
       pyr_lvl_1: 1
@@ -125,11 +123,6 @@ experiment_settings:
 
 
 log_buffer_size: 100
-
-save: False
-print_console: true
-show_plots: False
-save_plots: False
 
 range_normalization:
   from_0_to_1: 0

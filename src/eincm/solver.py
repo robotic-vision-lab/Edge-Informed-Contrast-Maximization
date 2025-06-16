@@ -217,8 +217,6 @@ class MultipleLevelEINCMSolver:
 
             while ((not self.theta_opt_state_pyr[key].success) 
                    and self.theta_opt_state_pyr[key].iter_num > 0
-                #    and _n_extra_attempts < self.theta_opt_solver_params['n_extra_attempts_per_level']
-                #    and pyr_lvl in self.theta_opt_solver_params['extra_attempt_levels']
                    and f'pyr_lvl_{pyr_lvl}' in self.theta_opt_solver_params['n_extra_attempts']
                    and _n_extra_attempts < self.theta_opt_solver_params['n_extra_attempts'][f'pyr_lvl_{pyr_lvl}']
                    ):
