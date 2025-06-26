@@ -11,7 +11,7 @@ from scipy.spatial.transform import Rotation as Rot
 from dataloaders.dsec_utils.euclidean_transform import Transform
 from dataloaders.reader_utils.hdf5_file_reader import HDF5FileReader
 
-iio.pluguins.freeimage.download()
+iio.plugins.freeimage.download()
 
 
 
