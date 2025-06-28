@@ -30,7 +30,7 @@ If you find this project useful, then please consider citing our work.
 
 ```bibtex
 @inproceedings{karmokar2025secrets,
-    author={Karmokar, Pritam P. and Nguyen, Quan H. and Beksi, William J.},
+    author={Karmokar, Pritam P and Nguyen, Quan H and Beksi, William J},
     title={Secrets of Edge-Informed Contrast Maximization for Event-Based Vision},
     booktitle={Proceedings of the Winter Conference on Applications of Computer Vision (WACV)},
     year={2025},
